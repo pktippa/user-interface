@@ -1,0 +1,6 @@
+{
+  "name": "pk-chat-window",
+  "dependencies": {
+    "chat-window": "*"
+  }
+}
