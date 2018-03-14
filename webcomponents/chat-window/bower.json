@@ -1,6 +1,6 @@
 {
   "name": "pk-chat-window",
   "dependencies": {
-    "chat-window": "0.6.1"
+    "chat-window": "0.5.1"
   }
 }

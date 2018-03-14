@@ -2,75 +2,70 @@
 <html>
   <head>
     <title>chat-window example</title>
-    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <link rel="import" href="bower_components/chat-window/chat-window.html"></link>
   </head>
   <body>
     <div>
-      <dom-bind id="scope">
-        <template>
-          <custom-style>
-            <style>
-              chat-window.styled {
-                font-size: small;
-                --chat-messages-height: 12em;
-                --paper-input-container-input: {
-                  margin: 0 2px;
-                }
-                --chat-message-text: {
-                  background-color: #f0f0f0;
-                  padding: 6px 8px;
-                  margin: 4px 0;
-                  border-radius: 6px;
-                };
-              }
-            </style>
-          </custom-style>
-          <chat-window
-            class="styled"
-            author="me"
-            single-line
-            input-text="{{text}}"
-            messages="[[messages]]"
-            on-send="sendMsg"></chat-window>
-          <script>
-            var scope = document.getElementById('scope');
-
-            var now = Date.now();
-            scope.messages = [
-              { author: 'you', text: 'dummy msg 1', created: now - (60*1000) },
-              { author: 'me', text: 'dummy msg 2', created: now - (3*60*1000) },
-              { author: 'you', text: 'dummy msg 3', created: now - (10*60*1000) },
-              { author: 'you', text: 'dummy msg 4', created: now - (60*60*1000) },
-              { author: 'me', text: 'dummy msg 5', created: now - (1.2*60*60*1000) },
-              { author: 'me', text: 'dummy msg 6', created: now - (1.5*60*60*1000) },
-              { author: 'you', text: 'dummy msg 7', created: now - (11.5*60*60*1000) },
-              { author: 'me', text: 'dummy msg 8', created: now - (12*60*60*1000) },
-              { author: 'you', text: 'dummy msg 9', created: now - (13*60*60*1000) },
-              { author: 'me', text: 'dummy msg 10', created: now - (1.5*24*60*60*1000) },
-              { author: 'you', text: 'dummy msg 11', created: now - (1.6*24*60*60*1000) },
-              { author: 'me', text: 'dummy msg 12', created: now - (4*24*60*60*1000) },
-              { author: 'me', text: 'dummy msg 13', created: now - (4.5*24*60*60*1000) },
-              { author: 'you', text: 'dummy msg 14', created: now - (14*24*60*60*1000) },
-              { author: 'me', text: 'dummy msg 15', created: now - (14.5*24*60*60*1000) },
-            ].reverse();
-
-            scope.sendMsg = function(e, text) {
-              // For demo purposes
-              scope.author = scope.author == 'me' ? 'you' : 'me';
-
-              var msg = {
-                author:  scope.author,
-                text: text,
-                created: Date.now()
-              }
-              // console.log('sending...', msg);
-              scope.push('messages', msg);
-              scope.text = '';
+      <template is="dom-bind" id="scope">
+        <style is="custom-style">
+          chat-window.styled {
+            font-size: small;
+            --chat-messages-height: 12em;
+            --paper-input-container-input: {
+              margin: 0 2px;
+            }
+            --chat-message-text: {
+              background-color: #f0f0f0;
+              padding: 6px 8px;
+              margin: 4px 0;
+              border-radius: 6px;
             };
-          </script>
-        </template>
-      </dom-bind>
+          }
+        </style>
+        <chat-window
+          class="styled"
+          author="me"
+          single-line
+          input-text="{{text}}"
+          messages="[[messages]]"
+          on-send="sendMsg"></chat-window>
+        <script>
+          var scope = document.getElementById('scope');
+
+          var now = Date.now();
+          scope.messages = [
+            { author: 'you', text: 'dummy msg 1', created: now - (60*1000) },
+            { author: 'me', text: 'dummy msg 2', created: now - (3*60*1000) },
+            { author: 'you', text: 'dummy msg 3', created: now - (10*60*1000) },
+            { author: 'you', text: 'dummy msg 4', created: now - (60*60*1000) },
+            { author: 'me', text: 'dummy msg 5', created: now - (1.2*60*60*1000) },
+            { author: 'me', text: 'dummy msg 6', created: now - (1.5*60*60*1000) },
+            { author: 'you', text: 'dummy msg 7', created: now - (11.5*60*60*1000) },
+            { author: 'me', text: 'dummy msg 8', created: now - (12*60*60*1000) },
+            { author: 'you', text: 'dummy msg 9', created: now - (13*60*60*1000) },
+            { author: 'me', text: 'dummy msg 10', created: now - (1.5*24*60*60*1000) },
+            { author: 'you', text: 'dummy msg 11', created: now - (1.6*24*60*60*1000) },
+            { author: 'me', text: 'dummy msg 12', created: now - (4*24*60*60*1000) },
+            { author: 'me', text: 'dummy msg 13', created: now - (4.5*24*60*60*1000) },
+            { author: 'you', text: 'dummy msg 14', created: now - (14*24*60*60*1000) },
+            { author: 'me', text: 'dummy msg 15', created: now - (14.5*24*60*60*1000) },
+          ].reverse();
+
+          scope.sendMsg = function(e, text) {
+            // For demo purposes
+            scope.author = scope.author == 'me' ? 'you' : 'me';
+
+            var msg = {
+              author:  scope.author,
+              text: text,
+              created: Date.now()
+            }
+            // console.log('sending...', msg);
+            scope.push('messages', msg);
+            scope.text = '';
+          };
+        </script>
+      </template>
     </div>
   </body>
 </html>
